@@ -17,7 +17,7 @@
       >
         <div
           :style="{ width: loadingProgress + '%' }"
-          class="shadow-none transition-default duration-500 flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-400"
+          class="shadow-none transition-default duration-500 flex flex-col text-center whitespace-nowrap text-white justify-center bg-gray-700"
         ></div>
       </div>
     </div>
