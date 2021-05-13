@@ -71,12 +71,11 @@ export const withPdfManager = () => {
                         pdfManager.documents.push({ name: blobs[index], value: images });
 
                     } catch (error) {
-                        console.log(error)
+                        console.log("Document skpped!")
                     }
                 }
                 pdfManager.fetching = false;
             } catch (error) {
-                console.log(error)
                 pdfManager.fetching = false;
             }
         }
