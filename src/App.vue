@@ -8,7 +8,12 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, provide } from "@vue/composition-api";
+  import {
+    computed,
+    defineComponent,
+    onMounted,
+    provide,
+  } from "@vue/composition-api";
   import HeaderBar from "./components/HeaderBar.vue";
   import { withPdfManager } from "./providers/withPdfManager";
   import { PdfManagerInjectionKey } from "./providers/types/PdfManagerInjectionKey";

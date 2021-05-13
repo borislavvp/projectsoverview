@@ -61,15 +61,22 @@ export const withPdfManager = () => {
                 const blobs = await getBlobs();
         
                 for (let index = 0; index < blobs.length; index++) {
-                    
                     const blockBlobClient = containerClient.getBlockBlobClient(blobs[index]);
-                    const downloadBlockBlobResponse = await blockBlobClient.download();
-                    const downloaded = await blobToString(await downloadBlockBlobResponse.blobBody!);
-                    const images = ["",...JSON.parse(`${downloaded}`)];
-                    pdfManager.documents.push({name:blobs[index],value:images});
+                            
+                    try {
+                        const downloadBlockBlobResponse = await blockBlobClient.download();
+                        
+                        const downloaded = await blobToString(await downloadBlockBlobResponse.blobBody!);
+                        const images = ["", ...JSON.parse(`${downloaded}`)];
+                        pdfManager.documents.push({ name: blobs[index], value: images });
+
+                    } catch (error) {
+                        console.log(error)
+                    }
                 }
                 pdfManager.fetching = false;
             } catch (error) {
+                console.log(error)
                 pdfManager.fetching = false;
             }
         }
