@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="relative">
     <documents-list />
   </div>
 </template>

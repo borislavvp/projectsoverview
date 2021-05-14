@@ -8,7 +8,7 @@
         class="rounded-full p-2 flex mr-2"
         :class="[
           flipbook.canFlipLeft
-            ? 'cursor-pointer shadow-md bg-white hover:bg-gray-200'
+            ? 'cursor-pointer shadow-md bg-white md:hover:bg-gray-200'
             : 'bg-gray-200  cursor-not-allowed',
         ]"
       >
@@ -28,7 +28,7 @@
         class="rounded-full p-3 flex mx-2"
         :class="[
           flipbook.canZoomIn
-            ? 'cursor-pointer  shadow-md bg-white hover:bg-gray-200'
+            ? 'cursor-pointer  shadow-md bg-white md:hover:bg-gray-200'
             : 'bg-gray-200  cursor-not-allowed',
         ]"
       >
@@ -52,7 +52,7 @@
         class="rounded-full p-3 flex"
         :class="[
           flipbook.canZoomOut
-            ? 'cursor-pointer  shadow-md bg-white hover:bg-gray-200'
+            ? 'cursor-pointer  shadow-md bg-white md:hover:bg-gray-200'
             : 'bg-gray-200  cursor-not-allowed',
         ]"
       >
@@ -72,7 +72,7 @@
         class="rounded-full p-2 flex mx-2"
         :class="[
           flipbook.canFlipRight
-            ? 'cursor-pointer  shadow-md bg-white hover:bg-gray-200'
+            ? 'cursor-pointer  shadow-md bg-white md:hover:bg-gray-200'
             : 'bg-gray-200  cursor-not-allowed',
         ]"
       >

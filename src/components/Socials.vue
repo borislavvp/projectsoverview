@@ -6,7 +6,7 @@
       class="text-gray-800 hover:text-gray-600 mx-1 md:mx-2"
     >
       <svg
-        class="w-4 h-4 md:w-8 md:h-8 fill-current"
+        class="w-5 h-5 md:w-8 md:h-8 fill-current"
         viewBox="0 0 19 12"
         xmlns="http://www.w3.org/2000/svg"
       >

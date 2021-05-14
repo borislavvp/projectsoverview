@@ -1,25 +1,27 @@
 <template>
   <div id="app" class="font-sans w-full h-screen overflow-hidden">
+    <img
+      src="./assets/background.png"
+      class="object-cover absolute w-full h-full transform rotate-180"
+      style="z-index: -10"
+    />
     <div class="flex flex-col h-screen w-full justify-between">
       <HeaderBar />
-      <router-view />
+      <documents-list />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import {
-    computed,
-    defineComponent,
-    onMounted,
-    provide,
-  } from "@vue/composition-api";
+  import { defineComponent, onMounted, provide } from "@vue/composition-api";
   import HeaderBar from "./components/HeaderBar.vue";
+  import DocumentsList from "./components/DocumentsList.vue";
   import { withPdfManager } from "./providers/withPdfManager";
   import { PdfManagerInjectionKey } from "./providers/types/PdfManagerInjectionKey";
   export default defineComponent({
     components: {
       HeaderBar,
+      DocumentsList,
     },
     setup() {
       const pdfManager = withPdfManager();
@@ -51,11 +53,11 @@
   ::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: rgb(128, 128, 128);
+    background-color: rgb(168, 168, 168);
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(110, 110, 110);
+    background: rgb(150, 150, 150);
   }
 </style>
