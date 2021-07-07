@@ -26,7 +26,6 @@
     setup() {
       const pdfManager = withPdfManager();
       provide(PdfManagerInjectionKey, pdfManager);
-
       onMounted(() => {
         pdfManager.prepareDocuments().catch((e) => console.log(e));
       });
