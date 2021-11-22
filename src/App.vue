@@ -7,7 +7,7 @@
     />
     <div class="flex flex-col h-screen w-full justify-between">
       <HeaderBar />
-      <documents-list />
+      <DocumentsList />
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@
       provide(PdfManagerInjectionKey, pdfManager);
 
       onMounted(() => {
-        pdfManager.prepareDocuments().catch((e) => {});
+        pdfManager.prepareDocuments().catch((e) => console.log(e));
       });
     },
   });
