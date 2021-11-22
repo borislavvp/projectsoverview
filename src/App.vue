@@ -28,7 +28,7 @@
       provide(PdfManagerInjectionKey, pdfManager);
 
       onMounted(() => {
-        pdfManager.prepareDocuments().catch((e) => console.log(e));
+        pdfManager.prepareDocuments().catch((e) => console.log("Error:", e));
       });
     },
   });
