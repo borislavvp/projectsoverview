@@ -97,25 +97,24 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "@vue/composition-api";
-  import { usePdfManager } from "../providers/provider";
+import { defineComponent } from "@vue/composition-api";
+import { usePdfManager } from "../providers/provider";
 
-  export default defineComponent({
-    props: {
-      flipbook: {
-        type: Object,
-        required: true,
-      },
+export default defineComponent({
+  props: {
+    flipbook: {
+      type: Object,
+      required: true,
     },
-    setup(props) {
-      const pdfManager = usePdfManager();
-      const goBack = () => {
-        pdfManager.discardDocument();
-      };
-      return { goBack };
-    },
-  });
+  },
+  setup(props) {
+    const pdfManager = usePdfManager();
+    const goBack = () => {
+      pdfManager.discardDocument();
+    };
+    return { goBack };
+  },
+});
 </script>
 
-<style>
-</style>
+<style></style>

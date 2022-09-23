@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="font-sans w-full h-screen overflow-hidden">
+  <div id="app" class="select-none font-sans w-full h-screen overflow-hidden">
     <img
       src="./assets/background.png"
       class="object-cover absolute w-full h-full transform rotate-180"
