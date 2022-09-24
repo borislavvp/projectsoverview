@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="select-none font-sans w-full h-screen overflow-hidden">
     <img
-      src="./assets/background.png"
-      class="object-cover absolute w-full h-full transform rotate-180"
+      src="./assets/background2.png"
+      class="object-cover absolute w-full h-full transform rotate-180 opacity-75"
       style="z-index: -10"
     />
     <div class="flex flex-col h-screen w-full justify-between">
