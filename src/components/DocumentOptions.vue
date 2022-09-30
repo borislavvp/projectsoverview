@@ -45,7 +45,8 @@
       </span>
       <span
         class="mx-4 font-semibold select-none text-sm md:text-lg flex flex-shrink-0"
-        >Page {{ flipbook.page }} of {{ flipbook.numPages }}
+        >Page {{ isMobile ? flipbook.page - 1 : flipbook.page }} of
+        {{ flipbook.numPages - 1 }}
       </span>
       <span
         @click="flipbook.zoomOut"
@@ -90,7 +91,8 @@
     </div>
     <span
       @click="goBack"
-      class="flex font-semibold px-4 py-2 rounded-full hover:bg-gray-200 hover:shadow-md cursor-pointer select-none"
+      class="flex font-semibold px-4 py-2 rounded-full outline-none focus:outline-none hover:bg-gray-200 hover:shadow-md cursor-pointer select-none"
+      :class="{ 'bg-gray-200': isMobile }"
       >GO BACK</span
     >
   </div>
@@ -104,6 +106,10 @@ export default defineComponent({
   props: {
     flipbook: {
       type: Object,
+      required: true,
+    },
+    isMobile: {
+      type: Boolean,
       required: true,
     },
   },

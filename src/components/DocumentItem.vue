@@ -24,32 +24,41 @@
       >
         <img :src="coverPage" class="w-full h-full" :alt="documentItem.name" />
       </div>
-      <flipbook
-        v-else
-        v-slot="flipbook"
-        class="w-full h-full relative justify-center flex flex-col-reverse"
-        :pages="documentItem.value"
-        :gloss="0.4"
-        :ambient="0.97"
-        :perspective="6000"
-        :nPolygons="1"
-      >
-        <document-options  :flipbook="flipbook"></document-options>
-      </flipbook>
+      <div v-else class="flex items-center h-full w-full">
+        <document-thumbnails
+          v-if="!isMobile"
+          :thumbnails="documentItem.value"
+          :flipbook="flipbookRef"
+        />
+        <flipbook
+          v-slot="flipbook"
+          ref="flipbookRef"
+          class="ml-10 mr-6 w-full h-full relative justify-center flex flex-col-reverse"
+          :pages="documentItem.value"
+          :gloss="0.4"
+          :ambient="0.97"
+          :perspective="6000"
+          :nPolygons="1"
+        >
+          <document-options :flipbook="flipbook" :is-mobile="isMobile" />
+        </flipbook>
+      </div>
     </div>
   </transition>
 </template>
 
 <script>
 import Flipbook from "flipbook-vue";
-import { computed, defineComponent ,ref} from "@vue/composition-api";
+import { computed, defineComponent, ref } from "@vue/composition-api";
 import { usePdfManager } from "../providers/provider";
 import DocumentOptions from "./DocumentOptions.vue";
+import DocumentThumbnails from "./DocumentThumbnails.vue";
 
 export default defineComponent({
   components: {
     Flipbook,
     DocumentOptions,
+    DocumentThumbnails,
   },
   props: {
     documentItem: {
@@ -58,6 +67,9 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const isMobile = window.innerWidth < 500 && window.innerHeight < 900;
+
+    const flipbookRef = ref(null);
 
     const pdfManager = usePdfManager();
 
@@ -70,6 +82,8 @@ export default defineComponent({
     const viewDocument = () => pdfManager.viewDocument(props.documentItem);
 
     return {
+      isMobile,
+      flipbookRef,
       coverPage,
       isCurrentDocumentSelected,
       documentIsSelected: pdfManager.isDocumentSelected,
@@ -94,5 +108,27 @@ export default defineComponent({
 .fade-enter/* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(30px);
+}
+.thumbnails {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(198, 205, 210, 0.6) 52%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.thumbnails::-webkit-scrollbar {
+  background-color: transparent;
+  width: 8px;
+}
+
+.thumbnails::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+  background-color: #e0e0e0;
+  border-radius: 100px;
 }
 </style>
