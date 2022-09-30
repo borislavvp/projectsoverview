@@ -12,7 +12,7 @@
       "
       :class="[
         isCurrentDocumentSelected
-          ? 'h-screen/90 p-3 md:p-8 w-full '
+          ? 'h-full p-3 md:p-8 w-full '
           : 'w-1/3 p-4 md:p-12',
       ]"
     >
@@ -66,6 +66,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    documentItemId: {
+      type: Number,
+      required: true,
+    },
   },
   setup(props) {
     const isMobile = window.innerWidth < 500 && window.innerHeight < 900;
@@ -80,7 +84,7 @@ export default defineComponent({
       () => props.documentItem.name === pdfManager.selectedDocument.value.name
     );
 
-    const viewDocument = () => pdfManager.viewDocument(props.documentItem);
+    const viewDocument = () => pdfManager.viewDocument(props.documentItemId);
 
     return {
       isMobile,

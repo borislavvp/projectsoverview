@@ -14,7 +14,7 @@ const containerClient = blobServiceClient.getContainerClient(
 
 const pdfManager = reactive({
   documents: [] as IDocument[],
-  selectedDocument: {} as IDocument,
+  selectedDocument: -1,
   fetching: false,
   numberOfBlobs: 10,
 });
@@ -30,18 +30,20 @@ export const withPdfManager = () => {
       fileReader.readAsText(blob);
     });
   };
-  const viewDocument = (document: IDocument) => {
-    pdfManager.selectedDocument = JSON.parse(JSON.stringify(document));
+  const viewDocument = (documentId: number) => {
+    pdfManager.selectedDocument = documentId;
   };
   const discardDocument = () => {
-    pdfManager.selectedDocument = {} as IDocument;
+    pdfManager.selectedDocument = -1;
   };
 
-  const selectedDocument = computed(() => pdfManager.selectedDocument);
-
-  const isDocumentSelected = computed(
-    () => selectedDocument.value.name !== undefined
+  const selectedDocument = computed(() =>
+    pdfManager.selectedDocument !== -1
+      ? pdfManager.documents[pdfManager.selectedDocument]
+      : {}
   );
+
+  const isDocumentSelected = computed(() => pdfManager.selectedDocument !== -1);
 
   const documentsLoaded = computed(
     () => (pdfManager.documents.length / pdfManager.numberOfBlobs) * 100

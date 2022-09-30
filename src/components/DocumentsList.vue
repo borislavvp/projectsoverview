@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-auto h-screen/92 flex flex-col items-center"
+    class="flex-auto h-full flex flex-col items-center"
     :class="[
       documentIsSelected
         ? 'overflow-hidden'
@@ -20,49 +20,48 @@
         </svg>
       </span>
     </div>
-    <div class="w-full h-screen/92 flex justify-center flex-wrap">
+    <div class="w-full h-full flex justify-center flex-wrap">
       <document-item
-        v-for="doc in documents"
+        v-for="(doc, i) in documents"
         :key="doc.name"
         :documentItem="doc"
+        :documentItemId="i"
       ></document-item>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import DocumentItem from "./DocumentItem.vue";
-  import { computed, defineComponent } from "@vue/composition-api";
-  import { usePdfManager } from "../providers/provider";
+import DocumentItem from "./DocumentItem.vue";
+import { computed, defineComponent } from "@vue/composition-api";
+import { usePdfManager } from "../providers/provider";
 
-  export default defineComponent({
-    components: {
-      DocumentItem,
-    },
-    setup() {
-      const pdfManager = usePdfManager();
+export default defineComponent({
+  components: {
+    DocumentItem,
+  },
+  setup() {
+    const pdfManager = usePdfManager();
 
-      const documentIsSelected = computed(
-        () => pdfManager.selectedDocument.value.name !== undefined
-      );
-      const showLoadingIndication = computed(
-        () => pdfManager.fetching && pdfManager.documents.value.length === 0
-      );
-      return {
-        documents: pdfManager.documents,
-        documentIsSelected,
-        showLoadingIndication,
-      };
-    },
-  });
+    const showLoadingIndication = computed(
+      () => pdfManager.fetching && pdfManager.documents.value.length === 0
+    );
+
+    return {
+      documents: pdfManager.documents,
+      documentIsSelected: pdfManager.isDocumentSelected,
+      showLoadingIndication,
+    };
+  },
+});
 </script>
 
 <style>
-  .list-complete-item {
-    transition: all 1s;
-  }
-  .list-complete-enter {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+.list-complete-item {
+  transition: all 1s;
+}
+.list-complete-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
 </style>
