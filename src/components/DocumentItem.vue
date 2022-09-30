@@ -29,6 +29,7 @@
           v-if="!isMobile"
           :thumbnails="documentItem.value"
           :flipbook="flipbookRef"
+          class="ml-4"
         />
         <flipbook
           v-slot="flipbook"
