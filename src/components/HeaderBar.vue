@@ -7,6 +7,8 @@
     >
       <span
         class="text-gray-800 relative font-medium md:font-light tracking-widest text-lg md:text-5xl flex-shrink-0 select-none"
+        :class="{ 'cursor-pointer': isDocumentSelected }"
+        @click="resetDovumentView"
         >ILIYANA TOSHEVA
         <span
           class="text-base -mt-2 -mr-3 md:text-lg font-semibold absolute right-0 top-0 md:mt-2 md:-mr-3"
@@ -30,20 +32,22 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "@vue/composition-api";
-  import { usePdfManager } from "../providers/provider";
-  import Socials from "./Socials.vue";
-  export default defineComponent({
-    components: { Socials },
-    setup() {
-      const pdfManager = usePdfManager();
-      return {
-        fetching: pdfManager.fetching,
-        loadingProgress: pdfManager.documentsLoaded,
-      };
-    },
-  });
+import { defineComponent } from "@vue/composition-api";
+import { usePdfManager } from "../providers/provider";
+import Socials from "./Socials.vue";
+export default defineComponent({
+  components: { Socials },
+  setup() {
+    const pdfManager = usePdfManager();
+    const resetDovumentView = () => pdfManager.discardDocument();
+    return {
+      resetDovumentView,
+      isDocumentSelected: pdfManager.isDocumentSelected,
+      fetching: pdfManager.fetching,
+      loadingProgress: pdfManager.documentsLoaded,
+    };
+  },
+});
 </script>
 
-<style>
-</style>
+<style></style>
