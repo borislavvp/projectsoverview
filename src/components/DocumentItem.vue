@@ -16,14 +16,17 @@
           : 'w-1/3 p-4 md:p-12',
       ]"
     >
-      <div
+      <button
         v-if="!isCurrentDocumentSelected"
-        class="w-full md:p-5 hover:scale-110 transform transition-default duration-500 shadow-lg md:shadow-2xl cursor-pointer select-none"
+        class="w-full focus:outline-none outline-none md:p-5 shadow-lg md:shadow-2xl select-none"
         tabindex="1"
         @click="viewDocument"
+        :class="{
+          'hover:scale-110 transform transition-default duration-500 cursor-pointer': !isMobile,
+        }"
       >
         <img :src="coverPage" class="w-full h-full" :alt="documentItem.name" />
-      </div>
+      </button>
       <div v-else class="flex items-center h-full w-full">
         <document-thumbnails
           v-if="!isMobile"
@@ -34,14 +37,14 @@
         <flipbook
           v-slot="flipbook"
           ref="flipbookRef"
-          class="ml-10 mr-6 w-full h-full relative justify-center flex flex-col-reverse"
+          class="mx-3 md:mx-6 w-full h-full relative justify-center flex flex-col-reverse"
           :pages="documentItem.value"
           :gloss="0.4"
           :ambient="0.97"
           :perspective="6000"
           :nPolygons="1"
         >
-          <document-options :flipbook="flipbook" :is-mobile="isMobile" />
+          <document-options :flipbook="flipbook" :is-mobile="isMobile" class="md:pt-4" />
         </flipbook>
       </div>
     </div>

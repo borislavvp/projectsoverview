@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-4 mx-auto flex flex-col items-center">
+  <div class="mx-auto flex flex-col items-center">
     <div
       class="flex flex-wrap items-center justify-between rounded-full px-2 md:px-6 py-4"
     >
