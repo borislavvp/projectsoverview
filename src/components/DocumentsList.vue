@@ -1,13 +1,13 @@
 <template>
   <div
-    class="flex-auto h-full flex flex-col items-center"
+    class="flex-auto"
     :class="[
       documentIsSelected
         ? 'overflow-hidden'
         : 'overflow-y-auto overflow-x-hidden',
     ]"
   >
-    <div class="mt-10" v-if="showLoadingIndication">
+    <div class="flex justify-center mt-10" v-if="showLoadingIndication">
       <span>
         <svg
           class="w-20 h-20 animate-spin text-gray-800 fill-current"
@@ -20,7 +20,10 @@
         </svg>
       </span>
     </div>
-    <div class="w-full h-full flex justify-center flex-wrap">
+    <div
+      v-else
+      class="flex-auto w-full flex justify-start flex-wrap items-center"
+    >
       <document-item
         v-for="(doc, i) in documents"
         :key="doc.name"
