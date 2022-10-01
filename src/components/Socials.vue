@@ -38,7 +38,7 @@
       </svg>
     </a>
     <a
-      href="https://www.instagram.com/iliyanatosheva/"
+      href="https://www.instagram.com/iliyanaatosheva/"
       target="blank"
       class="text-gray-800 hover:text-gray-600 mx-1 md:mx-2"
     >

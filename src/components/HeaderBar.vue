@@ -16,7 +16,7 @@
 
       <socials></socials>
     </div>
-    <div v-if="fetching" class="absolute w-full top-0 h-2">
+    <div v-if="fetching" class="absolute w-full top-0 h-1">
       <div
         class="overflow-hidden h-full mb-4 text-xs flex shadow-lg bg-gray-400"
       >
