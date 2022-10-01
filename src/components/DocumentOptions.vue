@@ -5,7 +5,7 @@
     >
       <span
         @click="flipbook.flipLeft"
-        class="rounded-full p-2 flex mr-2"
+        class="rounded-full p-2 flex"
         :class="[
           flipbook.canFlipLeft
             ? 'cursor-pointer shadow-md bg-white md:hover:bg-gray-200'
@@ -44,13 +44,13 @@
         </svg>
       </span>
       <span
-        class="mx-4 font-semibold select-none text-sm md:text-lg flex flex-shrink-0"
+        class="mx-2 font-semibold select-none text-sm md:text-lg flex flex-shrink-0"
         >Page {{ isMobile ? flipbook.page - 1 : flipbook.page }} of
         {{ flipbook.numPages - 1 }}
       </span>
       <span
         @click="flipbook.zoomOut"
-        class="rounded-full p-3 flex"
+        class="rounded-full p-3 flex mx-2"
         :class="[
           flipbook.canZoomOut
             ? 'cursor-pointer  shadow-md bg-white md:hover:bg-gray-200'
@@ -70,7 +70,7 @@
       </span>
       <span
         @click="flipbook.flipRight"
-        class="rounded-full p-2 flex mx-2"
+        class="rounded-full p-2 flex"
         :class="[
           flipbook.canFlipRight
             ? 'cursor-pointer  shadow-md bg-white md:hover:bg-gray-200'
