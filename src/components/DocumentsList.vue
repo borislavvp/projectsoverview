@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-auto"
+    class="flex-auto h-full"
     :class="[
       documentIsSelected
         ? 'overflow-hidden'
@@ -23,6 +23,7 @@
     <div
       v-else
       class="flex-auto w-full flex justify-start flex-wrap items-center"
+      :class="{ 'h-full': documentIsSelected}"
     >
       <document-item
         v-for="(doc, i) in documents"
