@@ -70,7 +70,7 @@ export const withPdfManager = () => {
           const blockBlobClient = containerClient.getBlockBlobClient(
             blobs[index]
           );
-
+ 
           try {
             const downloadBlockBlobResponse = await blockBlobClient.download();
 
